@@ -11,7 +11,7 @@ def getData(file):
 #the keys are from the first row in the data. and the values are each of the other rows
 	
 	#Open file and skip first row then close it
-	inFile = open(file)
+	inFile = open(file, 'r')
 	next(inFile)
 	lines = inFile.readlines()
 	inFile.close()
@@ -97,6 +97,7 @@ def findMonth(a):
 
 	counter = 0
 
+	#iterate through the list and get all the months
 	while counter < len(a):
 		vals = a[counter]["DOB"].split("/")
 		month = vals[0]
@@ -109,6 +110,7 @@ def findMonth(a):
 	maxCount = 0
 	maxVal = dateInfo[0]
 
+	#determine which month is most frequent in the data
 	for item in dateInfo:
 		if dateInfo.count(item) >= maxCount:
 			maxCount = dateInfo.count(item)
@@ -122,8 +124,20 @@ def mySortPrint(a,col,fileName):
 # as fist,last,email
 #Input: list of dictionaries, col (key) to sort by and output file name
 #Output: No return value, but the file is written
+	outFile = open(fileName, 'w')
+	sortedData = sorted(a, key=lambda k: k[col])
 
-	pass
+	for item in sortedData:
+		line = item["First"] + "," + item["Last"] + "," + item["Email"]
+		outFile.write(line)
+		outFile.write("\n")
+
+
+
+	return
+
+
+
 
 def findAge(a):
 # def findAge(a):
