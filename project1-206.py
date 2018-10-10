@@ -63,6 +63,7 @@ def classSizes(data):
 
 	counter = 0
 
+	#Calculate frequencies of each year
 	while counter < len(data):
 		if data[counter]["Year"] == "Freshman":
 			numFreshman += 1
@@ -78,26 +79,42 @@ def classSizes(data):
 
 		counter += 1
 
+	#Store them as a list of tuples
 	histo = [("Freshman", numFreshman), ("Sophomore", numSophomore), 
 	("Junior", numJunior), ("Senior", numSenior)]
 
+	#sort the list ascending
 	sortedHisto = sorted(histo, key=lambda tup: tup[1], reverse=True)
 
 	return sortedHisto
-
-
-
-
-
-
 
 
 def findMonth(a):
 # Find the most common birth month form this data
 # Input: list of dictionaries
 # Output: Return the month (1-12) that had the most births in the data
+	dateInfo = list()
 
-	pass
+	counter = 0
+
+	while counter < len(a):
+		vals = a[counter]["DOB"].split("/")
+		month = vals[0]
+
+		dateInfo.append(int(month))
+		counter += 1
+
+	dateInfo.sort(reverse=True)
+
+	maxCount = 0
+	maxVal = dateInfo[0]
+
+	for item in dateInfo:
+		if dateInfo.count(item) >= maxCount:
+			maxCount = dateInfo.count(item)
+			maxVal = item
+
+	return maxVal
 
 def mySortPrint(a,col,fileName):
 #Similar to mySort, but instead of returning single
