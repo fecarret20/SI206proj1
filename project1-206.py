@@ -152,8 +152,6 @@ def findAge(a):
 	#round the average to the closest integer
 	return int(round(sum(dateInfo) / len(dateInfo)))
 
-
-
 ################################################################
 ## DO NOT MODIFY ANY CODE BELOW THIS
 ################################################################
