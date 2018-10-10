@@ -9,18 +9,34 @@ def getData(file):
 #Input: file name
 #Ouput: return a list of dictionary objects where
 #the keys are from the first row in the data. and the values are each of the other rows
+	
+	#Open file and skip first row then close it
 	inFile = open(file)
+	next(inFile)
 	lines = inFile.readlines()
 	inFile.close()
 
-	listDict = []
+	listDict = list()
 
+	#parse the csv for separate key values
 	for line in lines:
-		listDict.append({'First': lines[0]})
-		listDict.append({'Last': lines[1]})
-		listDict.append({'Email': lines[2]})
-		listDict.append({'Class': lines[3]})
-		listDict.append({'DOB': lines[4]})
+		dataDict = dict()
+		vals = line.split(",")
+		first = vals[0]
+		last = vals[1]
+		email = vals[2]
+		grade = vals[3]
+		dob = vals[4]
+
+		#assign the key values to the key
+		dataDict["First"] = first
+		dataDict["Last"] = last
+		dataDict["Email"] = email
+		dataDict["Year"] = grade
+		dataDict["DOB"] = dob
+
+		#add the dictionary to the list
+		listDict.append(dataDict)
 
 	return listDict
 
@@ -28,9 +44,7 @@ def mySort(data,col):
 # Sort based on key/column
 #Input: list of dictionaries and col (key) to sort on
 #Output: Return the first item in the sorted list as a string of just: firstName lastName
-
-	pass
-
+	sortedData = sorted(data, key=lambda k: col)
 
 def classSizes(data):
 # Create a histogram
