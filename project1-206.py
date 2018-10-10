@@ -48,14 +48,48 @@ def mySort(data,col):
 	sortedData = sorted(data, key=lambda k: k[col])
 
 	return sortedData[0]["First"] + " " + sortedData[0]["Last"]
+
 def classSizes(data):
 # Create a histogram
 # Input: list of dictionaries
 # Output: Return a list of tuples sorted by the number of students in that class in
 # descending order
 # [('Senior', 26), ('Junior', 25), ('Freshman', 21), ('Sophomore', 18)]
+	
+	numFreshman = 0
+	numSophomore = 0
+	numJunior = 0
+	numSenior = 0
 
-	pass
+	counter = 0
+
+	while counter < len(data):
+		if data[counter]["Year"] == "Freshman":
+			numFreshman += 1
+
+		elif data[counter]["Year"] == "Sophomore":
+			numSophomore += 1
+
+		elif data[counter]["Year"] == "Junior":
+			numJunior += 1
+
+		elif data[counter]["Year"] == "Senior":
+			numSenior += 1
+
+		counter += 1
+
+	histo = [("Freshman", numFreshman), ("Sophomore", numSophomore), 
+	("Junior", numJunior), ("Senior", numSenior)]
+
+	sortedHisto = sorted(histo, key=lambda tup: tup[1], reverse=True)
+
+	return sortedHisto
+
+
+
+
+
+
 
 
 def findMonth(a):
