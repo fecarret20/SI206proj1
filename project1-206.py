@@ -46,7 +46,7 @@ def mySort(data,col):
 #Output: Return the first item in the sorted list as a string of just: firstName lastName
 	#sorts the data based on the key
 	sortedData = sorted(data, key=lambda k: k[col])
-
+	
 	return sortedData[0]["First"] + " " + sortedData[0]["Last"]
 
 def classSizes(data):
@@ -55,12 +55,10 @@ def classSizes(data):
 # Output: Return a list of tuples sorted by the number of students in that class in
 # descending order
 # [('Senior', 26), ('Junior', 25), ('Freshman', 21), ('Sophomore', 18)]
-	
 	numFreshman = 0
 	numSophomore = 0
 	numJunior = 0
 	numSenior = 0
-
 	counter = 0
 
 	#Calculate frequencies of each year
@@ -88,7 +86,6 @@ def classSizes(data):
 
 	return sortedHisto
 
-
 def findMonth(a):
 # Find the most common birth month form this data
 # Input: list of dictionaries
@@ -106,7 +103,7 @@ def findMonth(a):
 		counter += 1
 
 	dateInfo.sort(reverse=True)
-
+	
 	maxCount = 0
 	maxVal = dateInfo[0]
 
@@ -132,12 +129,7 @@ def mySortPrint(a,col,fileName):
 		outFile.write(line)
 		outFile.write("\n")
 
-
-
 	return
-
-
-
 
 def findAge(a):
 # def findAge(a):
@@ -145,8 +137,21 @@ def findAge(a):
 # Output: Return the average age of the students and round that age to the nearest
 # integer.  You will need to work with the DOB and the current date to find the current
 # age in years.
+	dateInfo = list()
 
-	pass
+	counter = 0
+
+	#iterate through the list and get all the years
+	while counter < len(a):
+		vals = a[counter]["DOB"].split("/")
+		year = vals[2]
+		#Calculate the age
+		dateInfo.append(2018 - int(year))
+		counter += 1
+
+	#round the average to the closest integer
+	return int(round(sum(dateInfo) / len(dateInfo)))
+
 
 
 ################################################################
