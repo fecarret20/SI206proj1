@@ -3,6 +3,9 @@ import filecmp
 from dateutil.relativedelta import *
 from datetime import date
 
+#Personal Info
+#Fernando Carretero (fecarret)
+#GitHub: https://github.com/fecarret20/SI206proj1
 
 def getData(file):
 # get a list of dictionary objects from the file
@@ -125,11 +128,12 @@ def mySortPrint(a,col,fileName):
 	sortedData = sorted(a, key=lambda k: k[col])
 
 	for item in sortedData:
-		line = item["First"] + "," + item["Last"] + "," + item["Email"]
+		line = item["First"] + "," + item["Last"] + "," + item["Email"] + "\n"
 		outFile.write(line)
-		outFile.write("\n")
 
+	outFile.close()
 	return
+
 
 def findAge(a):
 # def findAge(a):
@@ -173,7 +177,7 @@ def main():
 	total = 0
 	print("Read in Test data and store as a list of dictionaries")
 	data = getData('P1DataA.csv')
-	data2 = getData('P1DataB.csv')
+	data2 = getData('P1DataB2.csv')
 	total += test(type(data),type([]),50)
 
 	print()
